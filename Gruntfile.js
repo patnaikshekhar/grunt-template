@@ -6,9 +6,9 @@ module.exports = function(grunt) {
         concat: {
             dist: {
                 src: [
-                    'lib/angular/angular.min.js',
+                    /*'lib/angular/angular.min.js',
                     'lib/jquery/dist/jquery.min.js',
-                    'lib/bootstrap/dist/bootstrap.min.js',
+                    'lib/bootstrap/dist/bootstrap.min.js',*/
                     'js/global.js'
                 ],
 
@@ -50,7 +50,12 @@ module.exports = function(grunt) {
 
             html: {
                 files: ['*.html'],
-                tasks: [],
+                tasks: ['wiredep']
+            },
+
+            bower: {
+                files: ['bower.json'],
+                tasks: ['wiredep']
             }
         },
 
@@ -83,6 +88,15 @@ module.exports = function(grunt) {
                     }
                 }
             }
+        },
+
+        wiredep: {
+            target: {
+                src: [
+                    'index.html',
+                    'sass/global.scss'
+                ]
+            }
         }
     });
 
@@ -91,6 +105,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-autoprefixer');
+    grunt.loadNpmTasks('grunt-wiredep');
     grunt.loadNpmTasks('grunt-browser-sync');
 
     //grunt.registerTask('default', ['concat', 'uglify', 'sass']);
