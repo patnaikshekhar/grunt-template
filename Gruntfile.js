@@ -55,7 +55,7 @@ module.exports = function(grunt) {
 
             bower: {
                 files: ['bower.json'],
-                tasks: ['wiredep']
+                tasks: ['bower:install', 'wiredep']
             }
         },
 
@@ -97,6 +97,12 @@ module.exports = function(grunt) {
                     'sass/global.scss'
                 ]
             }
+        },
+
+        bower: {
+            install: {
+
+            }
         }
     });
 
@@ -107,6 +113,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-autoprefixer');
     grunt.loadNpmTasks('grunt-wiredep');
     grunt.loadNpmTasks('grunt-browser-sync');
+    grunt.loadNpmTasks('grunt-bower-task');
 
     //grunt.registerTask('default', ['concat', 'uglify', 'sass']);
     grunt.registerTask('default', ['browserSync', 'watch']);
